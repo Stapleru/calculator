@@ -40,7 +40,7 @@ function operate(a, b, operator){
 
 function parseText(string){
     let a, b, operator;
-    [a, operator, b] = string.split(/([/*-+=])/g);
+    [a, operator, b] = string.split(/([\/*\-+=])/g);
     return [a, operator, b];
 }
 
@@ -66,6 +66,8 @@ function populateDisplay(){
             a += buttonValue;
         else
             b += buttonValue;
+    } else if(this.classList.contains('clrBtn')){
+        a = null; b = null; operator = null;
     }
     displayValue = [a, operator, b].join("");
     display.textContent = displayValue;
