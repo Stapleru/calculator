@@ -2,4 +2,4 @@
 
 Simple GUI calculator made using HTML/CSS/JS
 
-Live Page: TODO;
+Live Page: https://stapleru.github.io/calculator/
