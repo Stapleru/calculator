@@ -40,7 +40,7 @@ function operate(a, b, operator){
 
 function parseText(string){
     let a, b, operator;
-    [a, operator, b] = string.split(/([\/*\-+=])/g);
+    [a, operator, b] = string.split(/(?<=.)([\/*\-+=])/g);
     return [a, operator, b];
 }
 
