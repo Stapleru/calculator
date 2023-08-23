@@ -24,17 +24,21 @@ function divide(a, b){
 }
 
 function operate(a, b, operator){
-    a = parseInt(a);
-    b = parseInt(b);
+    a = parseFloat(a);
+    b = parseFloat(b);
     if(operator == "+")
         return add(a, b);
     else if(operator == "-")
         return subtract(a, b);
     else if(operator == "*")
         return multiply(a, b);
-    else if(operator == "/")
-        return divide(a, b);
-
+    else if(operator == "/"){
+        if(b == 0){
+            alert("can't divide by zero");
+            return a;
+        } else
+            return divide(a, b);
+    }
     //MAYBE DO ERROR IF ELSE
 }
 
@@ -50,13 +54,15 @@ function populateDisplay(){
     [a, operator, b] = parseText(displayValue);
     console.log([a, operator, b])
     if(this.classList.contains('opBtn')){
-        if(a){
+        if(a && a != "-"){
             if(!b)
                 operator = buttonValue;
             else{
                 a = operate(a, b, operator)
-                b = null; operator = null;
-            }
+                b = null; operator = buttonValue;
+            } 
+        } else if(this.classList.contains('minus')){
+            a = "-";
         }
     } else if(this.classList.contains('eqlBtn') && operator && b){
         a = operate(a, b, operator)
