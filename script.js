@@ -26,25 +26,26 @@ function divide(a, b){
 function operate(a, b, operator){
     a = parseFloat(a);
     b = parseFloat(b);
+    let result;
     if(operator == "+")
-        return add(a, b);
+        result = add(a, b);
     else if(operator == "-")
-        return subtract(a, b);
+        result = subtract(a, b);
     else if(operator == "*")
-        return multiply(a, b);
+        result = multiply(a, b);
     else if(operator == "/"){
         if(b == 0){
             alert("can't divide by zero");
-            return a;
+            result =  a;
         } else
-            return divide(a, b);
+            result = divide(a, b);
     }
-    //MAYBE DO ERROR IF ELSE
+    return Math.round(result * 100) / 100
 }
 
 function parseText(string){
     let a, b, operator;
-    [a, operator, b] = string.split(/(?<=.)([\/*\-+=])/g);
+    [a, operator, b] = string.split(/(?<=[0-9])([\/*\-+=])/g);
     return [a, operator, b];
 }
 
