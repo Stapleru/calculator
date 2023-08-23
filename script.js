@@ -1,5 +1,5 @@
 let displayValue = "";
-
+let isResult = false;
 let display = document.querySelector(".display")
 let buttons = document.querySelector(".buttons").querySelectorAll("*")
 
@@ -66,11 +66,16 @@ function populateDisplay(){
             a = "-";
         }
     } else if(this.classList.contains('eqlBtn') && operator && b){
+        isResult = true;
         a = operate(a, b, operator)
         b = null; operator = null;
     } else if(this.classList.contains('numBtn')){
         if(!operator)
-            a += buttonValue;
+            if(isResult){
+                a = buttonValue;
+                isResult = false;
+            } else
+                a += buttonValue;
         else
             b += buttonValue;
     } else if(this.classList.contains('clrBtn')){
